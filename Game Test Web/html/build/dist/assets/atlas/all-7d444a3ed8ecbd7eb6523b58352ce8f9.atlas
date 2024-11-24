@@ -1,0 +1,12 @@
+all.png
+size: 1000, 1000
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ham
+  rotate: false
+  xy: 2, 2
+  size: 996, 996
+  orig: 996, 996
+  offset: 0, 0
+  index: -1
