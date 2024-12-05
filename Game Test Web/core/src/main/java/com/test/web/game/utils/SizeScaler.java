@@ -4,13 +4,18 @@ import com.badlogic.gdx.math.Vector2;
 
 public class SizeScaler {
 
-    private final Axis axis;
-    private final float originalSize;
+    private Axis axis;
+    private float originalSize;
 
     private float scale = 1f;
     private float newAxisSize = 0f;
 
     public SizeScaler(Axis axis, float originalSize) {
+        this.axis = axis;
+        this.originalSize = originalSize;
+    }
+
+    public void updateScaler(Axis axis, float originalSize) {
         this.axis = axis;
         this.originalSize = originalSize;
     }

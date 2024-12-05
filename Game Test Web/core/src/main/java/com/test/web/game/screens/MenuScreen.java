@@ -24,16 +24,11 @@ public class MenuScreen extends AdvancedScreen {
 
     private final Label lblTMP   = new Label(FontParameter.CharType.ALL.getChars(), ls60);
     private final Label lblText  = new Label("Screen Menu\n" + "Click to Game", ls60);
-    private final Label lblClick = new Label("Клікай Хомяка\n" + "10 разів", ls60);
+    private final Label lblClick = new Label("Демонстрація тексту", ls60);
     private final Label lblFPS   = new Label("", ls60);
-    private final Image imgHamster;
-
-    private int counterClick = 10;
 
     public MenuScreen(GDXGame game) {
         this.game = game;
-
-        imgHamster = new Image(game.assetsAll.hamster);
     }
 
     @Override
@@ -54,11 +49,16 @@ public class MenuScreen extends AdvancedScreen {
     }
 
     @Override
+    public void render(float delta) {
+        super.render(delta);
+        lblFPS.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
+    }
+
+    @Override
     public void addActorsOnStageUI(AdvancedStage stageUI) {
         addLblText(stageUI);
         addLblFPS(stageUI);
         addLblClick(stageUI);
-        addImgHamster(stageUI);
     }
 
     private void addLblText(AdvancedStage stageUI) {
@@ -77,26 +77,5 @@ public class MenuScreen extends AdvancedScreen {
         stageUI.addActor(lblClick);
         lblClick.setBounds(327f, 1200f, 425f, 146f);
         lblClick.setAlignment(Align.center);
-    }
-
-    private void addImgHamster(AdvancedStage stageUI) {
-        stageUI.addActor(imgHamster);
-        imgHamster.setBounds(42f, 0f, 996f, 996f);
-
-        ActorUtils.setOnClickListener(imgHamster, actor -> {
-            counterClick--;
-
-            if (counterClick > 0) {
-                lblClick.setText("Клікай Хомяка\n" + counterClick + " разів");
-            } else {
-                game.navigationManager.navigate(GameScreen.class.getName(), MenuScreen.class.getName());
-            }
-        });
-    }
-
-    @Override
-    public void render(float delta) {
-        super.render(delta);
-        lblFPS.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
     }
 }

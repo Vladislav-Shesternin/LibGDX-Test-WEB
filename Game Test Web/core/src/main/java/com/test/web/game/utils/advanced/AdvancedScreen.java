@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.test.web.GDXGame;
 import com.test.web.game.utils.Constants;
 import com.test.web.game.utils.ShapeDrawerUtil;
+import com.test.web.game.utils.SizeScaler;
 import com.test.web.game.utils.Utils;
 import com.test.web.game.utils.font.FontGenerator;
 
@@ -39,12 +41,22 @@ public abstract class AdvancedScreen extends ScreenAdapter implements AdvancedIn
 
     public final FontGenerator fontGenerator_InterRegular = new FontGenerator(FontGenerator.FontPath.InterRegular);
 
+    protected final SizeScaler sizeScaler_Ui_Back = new SizeScaler(SizeScaler.Axis.X, Constants.WIDTH_UI);
+
     public AdvancedScreen() { }
 
     @Override
     public void resize(int width, int height) {
         viewportBack.update(width, height, true);
         viewportUI.update(width, height, true);
+
+        float screenRatio      = ((float) width / height);
+        float fitViewportRatio = (viewportUI.getWorldWidth() / viewportUI.getWorldHeight());
+
+        if (fitViewportRatio >= screenRatio) sizeScaler_Ui_Back.updateScaler(SizeScaler.Axis.X, Constants.WIDTH_UI);
+        else sizeScaler_Ui_Back.updateScaler(SizeScaler.Axis.Y, Constants.HEIGHT_UI);
+
+        sizeScaler_Ui_Back.calculateScale(new Vector2(width, height));
     }
 
     @Override
@@ -53,6 +65,7 @@ public abstract class AdvancedScreen extends ScreenAdapter implements AdvancedIn
         stageUI.addAndFillActor(uiBackgroundImage);
 
         addActorsOnStageUI(stageUI);
+        addActorsOnStageBack(stageBack);
 
         Utils.addProcessors(inputMultiplexer, this, stageUI, stageBack);
 
@@ -88,6 +101,7 @@ public abstract class AdvancedScreen extends ScreenAdapter implements AdvancedIn
 //    }
 
     public abstract void addActorsOnStageUI(AdvancedStage stageUI);
+    public void addActorsOnStageBack(AdvancedStage stageBack) {}
 
     public void setBackBackground(TextureRegion region) {
         backBackgroundImage.setDrawable(new TextureRegionDrawable(region));

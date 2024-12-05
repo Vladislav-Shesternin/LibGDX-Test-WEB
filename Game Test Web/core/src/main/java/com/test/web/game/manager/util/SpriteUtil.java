@@ -26,11 +26,13 @@ public class SpriteUtil {
     public static class All {
 
         public final TextureRegion hamster;
+        public final TextureRegion header;
 
         //public final Texture LOADER;
 
         public All() {
-            hamster = getRegion("ham");
+            hamster = getRegion("hamster");
+            header  = getRegion("header");
 
             //LOADER = SpriteManager.EnumTexture.Loader.data.texture;
         }

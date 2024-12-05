@@ -173,7 +173,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">ham.png</key>
+            <key type="filename">hamster.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -182,9 +182,24 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>249,249,498,498</rect>
+                <rect>134,134,267,267</rect>
                 <key>scale9Paddings</key>
-                <rect>249,249,498,498</rect>
+                <rect>134,134,267,267</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">header.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>270,38,540,76</rect>
+                <key>scale9Paddings</key>
+                <rect>270,38,540,76</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

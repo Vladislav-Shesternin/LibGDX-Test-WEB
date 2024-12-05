@@ -1,0 +1,14 @@
+binding: locale=default
+binding: user.agent=gecko1_8
+Compiling module com.test.web.GdxDefinitionSuperdev
+   Unification traversed 1029 fields and methods and 383 types. 13 are considered part of the current module and 21 had all of their fields and methods traversed.
+   Compiling 1 permutation
+      Compiling permutation 0...
+      Linking per-type JS with 13 new/changed types.
+      Source Maps Enabled
+   Compile of permutations succeeded
+   Compilation succeeded -- 3,873s
+Linking into D:\LibGDX-Test-WEB\Game Test Web\html\build\gwt\work\com.test.web.GdxDefinitionSuperdev\compile-2\war\html; Writing extras to D:\LibGDX-Test-WEB\Game Test Web\html\build\gwt\work\com.test.web.GdxDefinitionSuperdev\compile-2\extras\html
+   Link succeeded
+   Linking succeeded -- 0,619s
+5,936s total -- Compile completed
